@@ -16,14 +16,14 @@ const ProductDetailPage = () => {
       {isLoading && <LoadingSpinner />}
       {isError && <h1 className="text-red-500">Something went wrong</h1>}
       {isSuccess && (
-        <div className="max-w-[1080px] mt-0 w-full h-full grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-4">
+        <div className="max-w-[1160px] mt-0 w-full h-full grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-4">
           <img
-            className="rounded-2xl px-16 w-full h-64 lg:px-0 lg:w-128 lg:h-128 block m-auto object-cover bg-cover"
+            className="rounded-2xl w-full h-64 lg:px-0 lg:w-128 lg:h-128 block m-auto object-cover bg-cover"
             loading="lazy"
             src={product.image}
             alt={product.name}
           />
-          <div className="flex flex-col h-full justify-evenly gap-6 mx-16 p-4">
+          <div className="flex flex-col h-full justify-evenly gap-6 p-4">
             <div className="flex flex-col items-start gap-6">
               <Badge variant="outline">{product.material}</Badge>
               <h1 className="text-4xl">{product.name}</h1>
