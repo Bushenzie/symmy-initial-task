@@ -6,8 +6,12 @@ import { Separator } from "../atoms/Separator";
 import { ProductCard } from "../molecules/ProductCard";
 
 const ProductsPage = () => {
+  const productsLimit = 20;
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, isLoading, isError, isSuccess } = useGetProducts({ page: currentPage, limit: 20 });
+  const { data, isLoading, isError, isSuccess } = useGetProducts({
+    page: currentPage,
+    limit: productsLimit,
+  });
 
   const changePage = (by: number) => {
     setCurrentPage((prev) => prev + by);
@@ -28,8 +32,15 @@ const ProductsPage = () => {
             <ProductCard product={product} key={product.id} />
           ))}
           <div className="col-span-full flex items-center justify-center gap-2">
-            {currentPage !== 1 && <Button onClick={() => changePage(-1)}>Prev. page</Button>}
-            {data.length > 0 && <Button onClick={() => changePage(1)}>Next page</Button>}
+            <Button onClick={() => changePage(-1)} isDisabled={currentPage === 1}>
+              Prev. page
+            </Button>
+            <Button
+              onClick={() => changePage(1)}
+              isDisabled={data.length === 0 || data.length < productsLimit}
+            >
+              Next page
+            </Button>
           </div>
         </div>
       )}
