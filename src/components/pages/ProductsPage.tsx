@@ -1,3 +1,7 @@
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback } from "../atoms/ErrorFallback";
+import LoadingSpinner from "../atoms/LoadingSpinner";
 import { Separator } from "../atoms/Separator";
 import { ProductList } from "../organisms/ProductList";
 
@@ -9,7 +13,11 @@ const ProductsPage = () => {
         <div className="text-gray-600">You can view all the products here</div>
       </div>
       <Separator />
-      <ProductList />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Suspense fallback={<LoadingSpinner />}>
+          <ProductList />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

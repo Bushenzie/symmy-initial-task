@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import type { Product } from "../types/products";
 import { axiosClient } from "./axios-client";
 
@@ -7,7 +7,7 @@ type GetSingleProductProps = {
 };
 
 export const useGetSingleProduct = ({ id }: GetSingleProductProps) => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ["products", id],
     queryFn: async () => {
       try {
