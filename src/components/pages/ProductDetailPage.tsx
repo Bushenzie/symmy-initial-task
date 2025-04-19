@@ -8,7 +8,7 @@ import { ProductDetail } from "../organisms/ProductDetail";
 const ProductDetailPage = () => {
   return (
     <div className="flex w-full max-w-screen justify-center items-center">
-      <GoBackButton className="absolute top-4 left-4" />
+      <GoBackButton className="absolute px-0 top-4 left-4" />
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<LoadingSpinner />}>
           <ProductDetail />
